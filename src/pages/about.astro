@@ -1,4 +1,6 @@
 ---
+import '../styles/global.css';
+
 const pageTitle = 'About Me'
 
 const identity = {
@@ -9,6 +11,8 @@ const identity = {
 };
 
 const skills = ['Project management software', 'Microsoft Suite software', 'SQL'];
+
+const skillColor = "green";
 ---
 
 <html lang="en">
@@ -18,6 +22,16 @@ const skills = ['Project management software', 'Microsoft Suite software', 'SQL'
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{pageTitle}</title>
+		<style define:vars={{skillColor}}>
+			h1 {
+				color: purple;
+				font-size: 4rem;
+			}
+			.skill {
+				color: var(--skillColor);
+				font-weight: bold;
+			}
+		</style>
 	</head>
 	<body>
 		<a href="/">Home</a>
@@ -35,7 +49,7 @@ const skills = ['Project management software', 'Microsoft Suite software', 'SQL'
 		</ul>
 		<p>My skills are:</p>
 		<ul>
-			{skills.map((skill) => <li>{skill}</li>)}
+			{skills.map((skill) => <li class="skill">{skill}</li>)}
 		</ul>
 	</body>
 </html>
