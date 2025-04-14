@@ -1,6 +1,5 @@
 ---
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
+import BaseLayout from '../layouts/Baselayout.astro';
 import '../styles/global.css';
 
 const pageTitle = 'About Me'
@@ -17,43 +16,18 @@ const skills = ['Project management software', 'Microsoft Suite software', 'SQL'
 const skillColor = "green";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{pageTitle}</title>
-		<style define:vars={{skillColor}}>
-			h1 {
-				color: purple;
-				font-size: 4rem;
-			}
-			.skill {
-				color: var(--skillColor);
-				font-weight: bold;
-			}
-		</style>
-	</head>
-	<body>
-		<Header />
-		<h1>{pageTitle}</h1>
-		<h2>... and my new Astro site!</h2>
-		<p>I am working through Astro's introductory tutorial. This is the second page on my website, and it's the first one I built myself!</p>
-		<p>This site will update as I complete more of the tutorial, so keep checking back and see how my journey is going!</p>
-		<p>Here are a few facts about me:</p>
-		<ul>
-			<li>My name is {identity.firstName}.</li>
-			<li>I go to college in {identity.currentState}, but I was born (and plan on moving back to) {identity.nextState} once I've graduated in May.</li>
-			<li>Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}</li>
-		</ul>
-		<p>My skills are:</p>
-		<ul>
-			{skills.map((skill) => <li class="skill">{skill}</li>)}
-		</ul>
-		<Footer />
-		<script>
-			import "../scripts/menu.js";
-		</script>
-	</body>
-</html>
+<BaseLayout pageTitle={pageTitle}>
+	<h2>... and my new Astro site!</h2>
+	<p>I am working through Astro's introductory tutorial. This is the second page on my website, and it's the first one I built myself!</p>
+	<p>This site will update as I complete more of the tutorial, so keep checking back and see how my journey is going!</p>
+	<p>Here are a few facts about me:</p>
+	<ul>
+		<li>My name is {identity.firstName}.</li>
+		<li>I go to college in {identity.currentState}, but I was born (and plan on moving back to) {identity.nextState} once I've graduated in May.</li>
+		<li>Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}</li>
+	</ul>
+	<p>My skills are:</p>
+	<ul>
+		{skills.map((skill) => <li class="skill">{skill}</li>)}
+	</ul>
+</BaseLayout>
